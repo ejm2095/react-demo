@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-import Quiz from './components/Quiz'
+// import Quiz from './components/Quiz'
+import Microwave from './microwave/Microwave'
 import * as firebase from 'firebase'
+import './index.css';
 
 var config = {
     apiKey: "AIzaSyCtQjVUYkc5DHWncnCoFnN6xEjIRlQs8F0",
@@ -17,9 +19,7 @@ firebase.initializeApp(config);
 const rootEl = document.getElementById('root')
 
 const render = () => ReactDOM.render(
-  <Quiz
-    questions={1}    
-  />,
+  <Microwave />,
   rootEl
 )
 
