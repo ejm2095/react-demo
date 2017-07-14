@@ -6,11 +6,55 @@ body {
 .cooking-chamber {
     height: 250px;
     width: 300px;
+    margin: 25px;
     background-color: gray;
-     background:
+    background:
         -webkit-radial-gradient(#444 35%, transparent 36%),
         -webkit-radial-gradient(#444 35%, transparent 36%),
         black;
-    background-position: 0 0, 8px 88px;
-    background-size:16px 16px;
+    background-position: 0 0, 6px 6px;
+    background-size:11px 11px;
+}
+
+.cooking-chamber.running {    
+    background-color: yellow;
+    background:
+        -webkit-radial-gradient(yellow 35%, transparent 36%),
+        -webkit-radial-gradient(yellow 35%, transparent 36%),
+        darkgray;
+    background-position: 0 0, 6px 6px;
+    background-size:11px 11px;
+}
+
+.keys-container {
+    width: 85px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.microwave-oven {
+    display: flex;
+    height: 300px;
+    width: 450px;
+    background-color: gray;
+}
+
+
+.open-button {
+    width: 100%;
+}
+
+.timer {
+    font-family: 'Orbitron', sans-serif;
+    background: black;
+    color: blue;
+    padding: 14px 5px;
+    margin: 25px auto;
+}
+
+.start-key, .stop-key {
+    display: inline-block;
 }
