@@ -9,15 +9,17 @@ class Timer extends Component {
   formatNumber(number) {
     return ("0" + number).slice(-2);
   }
-  
-  render() {    
+
+  render() {
+    const time = this.props.time.map((t) => this.formatNumber(t))
+    time.reverse()
     return (
       <div className="timer">
-        {this.props.time}
+        {time.join(':')}
       </div>
     )
   }
 }
 
-Timer = connect((store) => {return {time: store.time}})(Timer)
+Timer = connect((store) => {return {time: [...store.time]}})(Timer)
 export default Timer

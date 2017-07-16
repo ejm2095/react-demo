@@ -42,7 +42,7 @@ class Keypad extends Component {
     const numbers = (() => Array.from({length: 10}, (value, key) => key))().map((val) => {
       let number = (val+1)%10;
       return <NumberKey value={number}
-      onClick={()=>{ return this.props.dispatch({type:'TIME', value: number})}} />
+      onClick={()=>{ return this.props.dispatch({type:'ADD_TIME', value: number})}} />
     })
     return (
       <div className="keys-container">      
