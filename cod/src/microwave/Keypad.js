@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import store from "./store"
+import { connect } from "react-redux"
 
 function NumberKey(props) {
     return (
@@ -40,19 +40,21 @@ class Keypad extends Component {
 
   render() {
     const numbers = (() => Array.from({length: 10}, (value, key) => key))().map((val) => {
-      return <NumberKey value={(val+1)%10}/>
+      let number = (val+1)%10;
+      return <NumberKey value={number}
+      onClick={()=>{ return this.props.dispatch({type:'TIME', value: number})}} />
     })
     return (
       <div className="keys-container">      
         {numbers}
         <div>
-          <StartKey onClick={()=>store.dispatch({type:'RUN'}) }/>
-          <StopKey onClick={()=>store.dispatch({type:'OFF'}) }/>
+          <StartKey onClick={()=>this.props.dispatch({type:'RUN'}) }/>
+          <StopKey onClick={()=>this.props.dispatch({type:'OFF'}) }/>
           <OpenButton />
         </div>
       </div>
     )
   }
 }
-
+Keypad = connect((store) => {return {running: store.running}})(Keypad)
 export default Keypad
