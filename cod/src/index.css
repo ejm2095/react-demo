@@ -1,12 +1,9 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;    
+    margin: 20px;
 }
 
 .cooking-chamber {
-    height: 250px;
-    width: 300px;
-    margin: 25px;
     background-color: gray;
     background:
         -webkit-radial-gradient(#444 35%, transparent 36%),
@@ -14,9 +11,13 @@ body {
         black;
     background-position: 0 0, 6px 6px;
     background-size:11px 11px;
+    border: 2px solid #000;
+    height: 250px;
+    margin: 25px;
+    width: 300px;
 }
 
-.cooking-chamber.running {    
+.cooking-chamber.running {
     background-color: yellow;
     background:
         -webkit-radial-gradient(yellow 35%, transparent 36%),
@@ -27,32 +28,36 @@ body {
 }
 
 .keys-container {
-    width: 85px;
-    margin: 0 auto;
     align-items: center;
-    justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    width: 85px;
 }
 
 .microwave-oven {
+    background-color: gray;
     display: flex;
     height: 300px;
     width: 450px;
-    background-color: gray;
 }
 
+.microwave-side {
+    border-left: 2px solid #000;
+    padding-left: 5px;
+}
 
 .open-button {
     width: 100%;
 }
 
 .timer {
-    font-family: 'Orbitron', sans-serif;
     background: black;
     color: blue;
-    padding: 14px 5px;
+    font-family: 'Orbitron', sans-serif;
     margin: 25px auto;
+    padding: 14px 5px;
 }
 
 .start-key, .stop-key {
