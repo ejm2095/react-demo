@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { addTime, startMicrowave, stopMicrowave, getRunningState, stepTime } from '../actions/microwave';
+import { addTime, startMicrowave, stopMicrowave, stepTime } from '../actions/microwave';
 
 function NumberKey(props) {
     return (
@@ -39,7 +39,7 @@ function OpenButton(props) {
 class Keypad extends Component {
 
     render() {
-        const {addTime, startMicrowave, stopMicrowave, running, stepTime} = this.props;
+        const {addTime, startMicrowave, stopMicrowave, stepTime} = this.props;
         const start = () => {
             startMicrowave();
             setInterval(stepTime, 1000)

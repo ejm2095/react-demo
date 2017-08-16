@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CookingChamber extends Component {
-
-    constructor(props) {
-        super(props);    
-    }
-
-    render() {    
+    render() {
         return (
             <div className={'cooking-chamber '+ (this.props.running ? 'running' : '') }>
             </div>
