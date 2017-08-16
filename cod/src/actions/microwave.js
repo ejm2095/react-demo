@@ -18,8 +18,21 @@ export function stopMicrowave() {
   };
 }
 
-export function addTime(values) {
+export function stepTime() {
+  return {
+    type: types.STEP_TIME,
+  };
+}
+
+export function getTime() {
+  return {
+    type: types.GET_TIME,
+  };
+}
+
+export function addTime(value) {
   return {
     type: types.ADD_TIME,
+    value: value
   };
 }

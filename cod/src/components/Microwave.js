@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CookingChamber from './CookingChamber';
 import Keypad from './Keypad';
 import Timer from './Timer';
-import { startMicrowave, getRunningState } from '../actions/microwave';
+import { getRunningState } from '../actions/microwave';
 
 class Microwave extends Component {
     componentWillMount() {
@@ -19,7 +19,9 @@ class Microwave extends Component {
                 <CookingChamber running={running} />
                 <div className="microwave-side">
                     <Timer />
-                    <Keypad running={running}/>
+                    <Keypad
+                        running={running}
+                    />
                 </div>
             </div>
         );

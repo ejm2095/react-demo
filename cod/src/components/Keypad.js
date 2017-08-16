@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import { addTime, startMicrowave, stopMicrowave, getRunningState, stepTime } from '../actions/microwave';
 
 function NumberKey(props) {
     return (
@@ -34,27 +37,49 @@ function OpenButton(props) {
 }
 
 class Keypad extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
+        const {addTime, startMicrowave, stopMicrowave, running, stepTime} = this.props;
+        const start = () => {
+            startMicrowave();
+            setInterval(stepTime, 1000)
+        }
+
         const numbers = (() => Array.from({length: 10}, (value, key) => key))().map((val) => {
             let number = (val+1)%10;
-            return <NumberKey value={number}
-                onClick={()=>{ return this.props.dispatch({type:'ADD_TIME', value: number});}} />;
+            return (
+                <NumberKey value={number}
+                    key={`key_${number}`}
+                    onClick={ () => {return addTime(number)} }
+                />
+            );
         });
         return (
             <div className="keys-container">
                 {numbers}
                 <div>
-                    <StartKey onClick={()=>this.props.dispatch({type:'RUN'}) }/>
-                    <StopKey onClick={()=>this.props.dispatch({type:'OFF'}) }/>
+                    <StartKey onClick={ start } />
+                    <StopKey onClick={ stopMicrowave } />
                     <OpenButton />
                 </div>
             </div>
         );
     }
 }
-Keypad = connect((store) => {return {running: store.running};})(Keypad);
-export default Keypad;
+
+Keypad.propTypes = {
+  running: PropTypes.bool,
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addTime,
+    startMicrowave,
+    stopMicrowave,
+    stepTime,
+  }, dispatch)
+);
+
+export default connect(
+  null, mapDispatchToProps,
+)(Keypad);
