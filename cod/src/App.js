@@ -5,7 +5,7 @@ import Microwave from './components/Microwave';
 import './index.css';
 
 export default () => (
-  <Provider store={store}>
-      <Microwave />
-  </Provider>
+    <Provider store={store}>
+        <Microwave />
+    </Provider>
 );

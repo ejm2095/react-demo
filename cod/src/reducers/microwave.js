@@ -3,7 +3,7 @@ import * as types from '../actions/types';
 const initialState = {
     running:false,
     time:[0,0,0]
-}
+};
 
 export default (state=initialState, action) => {
     //TODO: make this work for 100+
@@ -33,22 +33,22 @@ export default (state=initialState, action) => {
             }
             timeArr[0]--;
         }
-        return timeArr
-    }
+        return timeArr;
+    };
 
     if (action.type === types.RUN) {
         return {...state, running: true};
     } else if (action.type === types.STOP) {
         if (state.running)
             return {...state, running: false };
-        return {...state, time: [0,0,0]}
+        return {...state, time: [0,0,0]};
     } else if (action.type === types.ADD_TIME) {
         if (state.running)
             return;
         return {...state, time: appendToTime(state.time, action.value)};
     } else if (action.type === types.STEP_TIME) {
         if (state.running) {
-            let newTime = decreaseTime(state.time)
+            let newTime = decreaseTime(state.time);
             if (Math.max(...newTime))
                 return {...state, time: newTime};
         }
