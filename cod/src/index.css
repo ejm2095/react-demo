@@ -56,8 +56,9 @@ body {
     background: black;
     color: blue;
     font-family: 'Orbitron', sans-serif;
-    margin: 25px auto;
-    padding: 14px 5px;
+    margin: 25px 5px 25px 0;
+    padding: 14px 0px 14px 10px;
+    width: 85px;
 }
 
 .start-key, .stop-key {

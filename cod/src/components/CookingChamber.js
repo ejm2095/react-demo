@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class CookingChamber extends Component {
+class CookingChamber extends React.Component {
     render() {
         return (
-            <div className={'cooking-chamber '+ (this.props.running ? 'running' : '') }>
-            </div>
+            <div className={'cooking-chamber '+ (this.props.running ? 'running' : '') } />
         );
     }
 }
 
-CookingChamber = connect((store) => {return {running: store.running};})(CookingChamber);
+CookingChamber.propTypes = {
+    running: PropTypes.bool,
+};
+
 export default CookingChamber;

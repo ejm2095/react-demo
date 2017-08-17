@@ -1,56 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { addTime, startMicrowave, stopMicrowave, stepTime } from '../actions/microwave';
 
-function NumberKey(props) {
+const NumberKey = ({value, onClick}) => {
     return (
-        <button className="key number-key" onClick={props.onClick}>
-            {props.value}
+        <button className="key number-key" onClick={onClick}>
+            {value}
         </button>
     );
-}
+};
 
-function StartKey(props) {
-    return (
-        <button className="key start-key" onClick={props.onClick}>
-            Start
-        </button>
-    );
-}
+const StartKey = ({onClick}) => (
+    <button className="key start-key" onClick={onClick}>
+        Start
+    </button>
+);
 
-function StopKey(props) {
-    return (
-        <button className="key start-key" onClick={props.onClick}>
-            Stop
-        </button>
-    );
-}
+const StopKey = ({onClick}) => (
+    <button className="key start-key" onClick={onClick}>
+        Stop
+    </button>
+);
 
-function OpenButton(props) {
-    return (
-        <button className="key open-button" onClick={props.onClick}>
+const OpenButton = ({onClick}) => (
+    <button className="key open-button" onClick={onClick}>
 
-        </button>
-    );
-}
+    </button>
+);
 
-class Keypad extends Component {
+class Keypad extends React.Component {
+
+    componentWillReceiveProps(nextProps) {
+        const { running } = this.props;
+        const { runningNext } = nextProps;
+        if(running && !runningNext) {
+            clearInterval(this.interval);
+        }
+    }
 
     render() {
         const {addTime, startMicrowave, stopMicrowave, stepTime} = this.props;
+
         const start = () => {
             startMicrowave();
-            setInterval(stepTime, 1000)
-        }
+            this.interval = setInterval(stepTime, 1000);
+        };
 
         const numbers = (() => Array.from({length: 10}, (value, key) => key))().map((val) => {
             let number = (val+1)%10;
             return (
                 <NumberKey value={number}
                     key={`key_${number}`}
-                    onClick={ () => {return addTime(number)} }
+                    onClick={ () => {return addTime(number);} }
                 />
             );
         });
@@ -68,18 +71,18 @@ class Keypad extends Component {
 }
 
 Keypad.propTypes = {
-  running: PropTypes.bool,
+    running: PropTypes.bool,
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    addTime,
-    startMicrowave,
-    stopMicrowave,
-    stepTime,
-  }, dispatch)
+    bindActionCreators({
+        addTime,
+        startMicrowave,
+        stopMicrowave,
+        stepTime,
+    }, dispatch)
 );
 
 export default connect(
-  null, mapDispatchToProps,
+    null, mapDispatchToProps
 )(Keypad);

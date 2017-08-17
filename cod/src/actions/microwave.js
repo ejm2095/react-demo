@@ -1,14 +1,8 @@
 import * as types from './types';
 
-export function startMicrowave(time) {
+export function startMicrowave() {
     return {
         type: types.RUN,
-    };
-}
-
-export function getRunningState() {
-    return {
-        type: types.IS_RUNING,
     };
 }
 
@@ -24,9 +18,9 @@ export function stepTime() {
     };
 }
 
-export function getTime() {
+export function getState() {
     return {
-        type: types.GET_TIME,
+        type: types.GET_STATE,
     };
 }
 

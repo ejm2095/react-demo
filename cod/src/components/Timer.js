@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-class Timer extends Component {
+class Timer extends React.Component {
     formatNumber(number) {
         return ('0' + number).slice(-2);
     }
 
+    displayTime(time) {
+        return '000000'.slice(time.length).concat(time).match(/.{1,2}/g).join(':');
+    }
+
     render() {
-        const time = this.props.time.map((t) => this.formatNumber(t));
-        time.reverse();
+        let time = [...this.props.time].reverse().join('');
         return (
             <div className="timer">
-                {time.join(':')}
+                { this.displayTime(time) }
             </div>
         );
     }
 }
-// TODO: FIX THIS! to use redux not store
-Timer = connect((store) => {return {time: [...store.time]};})(Timer);
+
 export default Timer;
