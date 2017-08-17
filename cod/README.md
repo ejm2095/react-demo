@@ -4,6 +4,10 @@ Improvements to be made are:
   - More code cleanup and refactoring
   - Add open/close functionality
   - Sounds
-  - Make it prettyier
+  - Make it prettier
+
+to run:
+    npm install
+    npm run start
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
