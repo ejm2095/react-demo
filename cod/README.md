@@ -7,7 +7,7 @@ Improvements to be made are:
   - Make it prettier
 
 to run:
+    *from the cod directory
     npm install
     npm run start
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
