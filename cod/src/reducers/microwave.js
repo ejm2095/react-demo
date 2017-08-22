@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default (state=initialState, action) => {
-    //TODO: make this work for 100+
+
     const appendToTime = (timeArr, value) => {
         if (timeArr.length < 6) {
             timeArr.unshift(value);
