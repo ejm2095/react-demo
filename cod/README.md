@@ -8,6 +8,6 @@ Improvements to be made are:
 
 to run:
     *from the cod directory
-    npm install
-    npm run start
+  - npm install
+  - npm run start
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
